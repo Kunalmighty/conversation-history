@@ -15,7 +15,7 @@ export async function fetchConversationsByParticipant(manager, phoneNumber, date
   };
 
   return new Promise((resolve, reject) =>{
-    fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}fetchAllConversationsByParticipant?phoneNumber=${encodeURIComponent(phoneNumber)}&dateOffset=${dateOffset}`, options)
+    fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}fetchAllConversationsByParticipant.js?phoneNumber=${encodeURIComponent(phoneNumber)}&dateOffset=${dateOffset}`, options)
     .then(data => {
       resolve(data.json());
     })
@@ -37,7 +37,7 @@ export async function fetchConversationMessages(manager, conversationSid){
   };
 
   return new Promise((resolve, reject) =>{
-    fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}fetchConversationMessages?conversationSid=${conversationSid}`, options)
+    fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}fetchConversationMessages.js?conversationSid=${conversationSid}`, options)
     .then(data => {
       resolve(data.json());
     })

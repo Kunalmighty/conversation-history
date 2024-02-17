@@ -13,7 +13,7 @@ export async function addParticipantToConversation(manager, conversationSid, add
   };
 
   return new Promise((resolve, reject) =>{
-    fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}addParticipantToConversation?conversationSid=${conversationSid}&address=${encodeURIComponent(address)}`, options)
+    fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}addParticipantToConversation.js?conversationSid=${conversationSid}&address=${encodeURIComponent(address)}`, options)
     .then(data => {
       resolve(data.json());
     })

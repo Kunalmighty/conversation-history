@@ -37,6 +37,9 @@ type MyState = {
     messages: MessageTrimmed[]; // like this
 };
 
+
+
+
 class ConversationHistoryTranscriptComponent extends React.Component<MyProps, MyState> {
 
     constructor(props : any) {
@@ -86,7 +89,7 @@ class ConversationHistoryTranscriptComponent extends React.Component<MyProps, My
                                         ) 
                                     })
                                     }
-                                <ChatMessageMeta aria-label="customer" >
+                                <ChatMessageMeta aria-label="customer">
                                     <ChatMessageMetaItem>{message.author} ・ {dateTime.slice(0,24)}</ChatMessageMetaItem>
                                 </ChatMessageMeta>
                             </ChatMessage>
@@ -100,7 +103,7 @@ class ConversationHistoryTranscriptComponent extends React.Component<MyProps, My
                         //console.log("outbound message?", message)
                         return (    
                             <ChatMessage variant="outbound" key={message.index}>
-                                <ChatBubble >{message.body}</ChatBubble>
+                                <ChatBubble style={{ color: 'red', fontSize: '16px' }}>{message.body}</ChatBubble>
                                 {
                                     message.media?.map( (media : Media, index: React.Key )   => {
                                         if(!media){

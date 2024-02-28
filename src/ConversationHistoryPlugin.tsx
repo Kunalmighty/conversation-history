@@ -3,6 +3,7 @@ import * as Flex from '@twilio/flex-ui';
 import { FlexPlugin } from '@twilio/flex-plugin';
 import { CustomizationProvider } from '@twilio-paste/core/customization';
 import ConversationHistoryTabComponent from './components/ConversationHistoryTabComponent/ConversationHistoryTabComponent';
+import ConversationHistoryTabComponent2 from './components/ConversationHistoryTabComponent/ConversationHistoryTabComponent2';
 import { addParticipantToConversation } from './helpers/addParticipantToConversation';
 
 const PLUGIN_NAME = 'ConversationHistoryPlugin';
@@ -27,9 +28,14 @@ export default class ConversationHistoryPlugin extends FlexPlugin {
     });
 
     flex.TaskCanvasTabs.Content.add(<ConversationHistoryTabComponent key="data-on-canvas-comp" label="Conversations" manager={manager}/>);
-
+    flex.CRMContainer.Content.replace(<ConversationHistoryTabComponent2 key="data-on-canvas-comp-1" label="Conversations" manager={manager}/>);
+/*
     //alter wrap-up to add address to chat interactions so they can be found  
     flex.Actions.replaceAction('WrapupTask', async (payload, original) => {
+
+      console.log('This is the task channel:', payload.task.taskChannelUniqueName);
+      console.log('This is the payload:', payload.task.taskChannelUniqueName);
+
      // Only alter chat tasks, skip others
       if( payload.task.taskChannelUniqueName !== "chat" || payload.task.attributes.from.startsWith('whatsapp:')) {
         original(payload);
@@ -41,5 +47,6 @@ export default class ConversationHistoryPlugin extends FlexPlugin {
         })        
       }
     });
+    */
   }
 }

@@ -27,27 +27,41 @@ type MyState = {
 
 class ConversationHistoryTabComponent extends React.Component<MyProps, MyState> {
 
+
+
     constructor(props : any) {
         super(props);
         this.state = {
             conversations: [],
             phoneNumber: ''
-        }
+        };
+
+        
+
     }  
 
-    async componentDidUpdate(){
-        if (this.state.phoneNumber != this.props.task?.attributes.from){
-            const fetchConversationsRequest = await fetchConversationsByParticipant(this.props.manager, this.props.task?.attributes.from, process.env.FETCH_CONVERSATIONS_AS_OLD_AS).then( (convos) =>{     
-                this.setState({conversations : convos});
-                this.setState({phoneNumber : this.props.task?.attributes.from});
-            })
+
+
+    async componentDidUpdate() {
+        if (this.state.phoneNumber !== this.props.task?.attributes.from) {
+            const fetchConversationsRequest = await fetchConversationsByParticipant(this.props.manager, this.props.task?.attributes.from, process.env.FETCH_CONVERSATIONS_AS_OLD_AS).then((convos) => {
+                this.setState({ conversations: convos });
+                this.setState({ phoneNumber: this.props.task?.attributes.from });
+            });
         }
     }
     
     render() {
         
-        return (
-            <Box padding="space20" width="100vw">
+        return (      
+            
+         
+            
+            
+
+                <Box padding="space20" width="100vw">
+
+            
                     {
                         this.state.conversations?.map((conversation, index)=> {
                             let dateTime : string = conversation.conversationDateCreated;
@@ -79,6 +93,7 @@ class ConversationHistoryTabComponent extends React.Component<MyProps, MyState> 
                         })
                     }
             </Box>
+    
         );
 }
 }

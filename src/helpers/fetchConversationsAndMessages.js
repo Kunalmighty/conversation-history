@@ -17,8 +17,14 @@ export async function fetchConversationsByParticipant(manager, phoneNumber, date
   return new Promise((resolve, reject) =>{
     fetch(`${process.env.REACT_APP_SERVERLESS_DOMAIN_URL}fetchAllConversationsByParticipant.js?phoneNumber=${encodeURIComponent(phoneNumber)}&dateOffset=${dateOffset}`, options)
     .then(data => {
+      if (!data.ok) {
+        throw new Error('Network response was not ok');
+      }
       resolve(data.json());
     })
+    .catch(error => {
+      reject(error);
+    });
   })
 }
 

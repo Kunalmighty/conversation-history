@@ -102,8 +102,8 @@ class ConversationHistoryTranscriptComponent extends React.Component<MyProps, My
                         }
                         //console.log("outbound message?", message)
                         return (    
-                            <ChatMessage variant="outbound" key={message.index}>
-                                <ChatBubble style={{ color: 'red', fontSize: '16px' }}>{message.body}</ChatBubble>
+                            <ChatMessage variant="inbound" key={message.index}>
+                                <ChatBubble>{message.body}</ChatBubble>
                                 {
                                     message.media?.map( (media : Media, index: React.Key )   => {
                                         if(!media){
